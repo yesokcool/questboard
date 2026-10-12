@@ -1,7 +1,7 @@
 {
   "name": "questboard",
   "private": true,
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",

@@ -104,6 +104,5 @@ run) can send `Authorization: Bearer <token>` to:
 
 ## License
 
-[AGPL-3.0](LICENSE). You can use, change and run it, including for others. If
-you run a changed version for other people, share your changes under the same
-license.
+[MIT](LICENSE). Use it, change it and run it for anyone; keep the license
+notice with the code.
