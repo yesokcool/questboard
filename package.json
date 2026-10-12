@@ -1,0 +1,14 @@
+{
+  "name": "questboard",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "seed:local": "wrangler kv key put board --path seed-board.example.json --binding GAMES_KV --local",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.149.0"
+  }
+}

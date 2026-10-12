@@ -1,0 +1,206 @@
+{
+ "version": 1,
+ "savedAt": "2026-10-12T00:00:00.000Z",
+ "lanes": [
+  {
+   "id": "inbox",
+   "name": "Inbox",
+   "color": "#6e7a99",
+   "sortByDiscount": false,
+   "items": [
+    {
+     "id": "i1",
+     "title": "PEAK",
+     "steam": [
+      "3527290"
+     ],
+     "tags": [
+      "4p"
+     ]
+    },
+    {
+     "id": "i2",
+     "title": "R.E.P.O.",
+     "steam": [
+      "3241660"
+     ],
+     "tags": [
+      "6p"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "maybe",
+   "name": "Maybe",
+   "color": "#9b7fd4",
+   "sortByDiscount": true,
+   "items": [
+    {
+     "id": "m1",
+     "title": "Valheim",
+     "steam": [
+      "892970"
+     ],
+     "tags": [
+      "10p"
+     ]
+    },
+    {
+     "id": "m2",
+     "title": "Don't Starve Together",
+     "steam": [
+      "322330"
+     ],
+     "tags": [
+      "6p"
+     ]
+    },
+    {
+     "id": "m3",
+     "title": "ELDEN RING",
+     "steam": [
+      "1245620"
+     ],
+     "tags": [
+      "3p"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sale",
+   "name": "Buy On Sale",
+   "color": "#2fb890",
+   "sortByDiscount": true,
+   "items": [
+    {
+     "id": "s1",
+     "title": "Borderlands 3",
+     "steam": [
+      "397540"
+     ],
+     "tags": [
+      "4p"
+     ]
+    },
+    {
+     "id": "s2",
+     "title": "It Takes Two",
+     "steam": [
+      "1426210"
+     ],
+     "tags": [
+      "2p"
+     ]
+    },
+    {
+     "id": "s3",
+     "title": "Risk of Rain 2",
+     "steam": [
+      "632360"
+     ],
+     "tags": [
+      "4p"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "playing",
+   "name": "Playing",
+   "color": "#46c25f",
+   "sortByDiscount": false,
+   "showPrices": false,
+   "items": [
+    {
+     "id": "p1",
+     "title": "Deep Rock Galactic",
+     "steam": [
+      "548430"
+     ],
+     "tags": [
+      "4p"
+     ]
+    },
+    {
+     "id": "p2",
+     "title": "Lethal Company",
+     "steam": [
+      "1966720"
+     ],
+     "tags": [
+      "4p"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "done",
+   "name": "Completed",
+   "color": "#3d9970",
+   "sortByDiscount": false,
+   "showPrices": false,
+   "items": [
+    {
+     "id": "c1",
+     "title": "Portal 2",
+     "steam": [
+      "620"
+     ],
+     "tags": [
+      "2p"
+     ]
+    },
+    {
+     "id": "c2",
+     "title": "Left 4 Dead 2",
+     "steam": [
+      "550"
+     ],
+     "tags": [
+      "4p"
+     ]
+    },
+    {
+     "id": "c3",
+     "title": "Stardew Valley",
+     "steam": [
+      "413150"
+     ],
+     "tags": [
+      "4p"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nope",
+   "name": "Not For Us",
+   "color": "#d64545",
+   "sortByDiscount": false,
+   "showPrices": false,
+   "items": [
+    {
+     "id": "n1",
+     "title": "Among Us",
+     "steam": [
+      "945360"
+     ],
+     "tags": [
+      "10p"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "trash",
+   "name": "Trashed",
+   "color": "#8e8e93",
+   "trash": true,
+   "showPrices": false,
+   "sortByDiscount": false,
+   "items": []
+  }
+ ]
+}

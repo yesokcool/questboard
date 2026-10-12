@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Grenze+Gotisch:wght@700..900&display=swap">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a84ff">
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/icon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/img/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{TITLE}}">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:url" content="{{ORIGIN}}/">
+<meta property="og:image" content="{{ORIGIN}}/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+  try {
+    document.documentElement.dataset.theme = localStorage.getItem("gk-theme") || "dark";
+    document.documentElement.dataset.density = localStorage.getItem("gk-density") || "medium";
+  } catch (e) { document.documentElement.dataset.theme = "dark"; }
+</script>
+<style>
+/* Apple-style system palette: layered greys, hairline separators, vibrant
+   system colors used sparingly. Dark by default; light via the toggle. */
+:root {
+  color-scheme: dark;
+  --title-from: #fff; --title-to: #b9b9c0;
+  --glow-a: rgba(10, 132, 255, 0.16); --glow-b: rgba(191, 90, 242, 0.13);
+  --cover-bg: #1c1c1e;
+  --raised: rgba(58, 58, 60, 0.85);
+  --toast: rgba(44, 44, 46, 0.85);
+  --sheet: rgba(30, 30, 32, 0.9);
+  --soft-panel: rgba(28, 28, 30, 0.5);
+  --dashed: rgba(255, 255, 255, 0.12);
+  --accent-text: #64b5ff;
+  --link-hover: #fff;
+  --shadow-lg: 0 24px 48px -24px rgba(0,0,0,.8);
+  --bg: #000;
+  --panel: rgba(28, 28, 30, 0.72);
+  --panel-solid: #141416;
+  --card: rgba(255, 255, 255, 0.05);
+  --card-hover: rgba(255, 255, 255, 0.085);
+  --fill: rgba(118, 118, 128, 0.24);
+  --label: #f5f5f7;
+  --label-2: rgba(235, 235, 245, 0.62);
+  --label-3: rgba(235, 235, 245, 0.34);
+  --hairline: rgba(255, 255, 255, 0.08);
+  --blue: #0a84ff;
+  --red: #ff453a; --orange: #ff9f0a; --green: #30d158; --gray: #8e8e93;
+  --radius-lg: 22px; --radius-md: 14px; --radius-sm: 8px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", system-ui, sans-serif;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f2f2f7;
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-solid: #ffffff;
+  --card: rgba(0, 0, 0, 0.035);
+  --card-hover: rgba(0, 0, 0, 0.065);
+  --fill: rgba(120, 120, 128, 0.14);
+  --label: #1d1d1f;
+  --label-2: rgba(60, 60, 67, 0.7);
+  --label-3: rgba(60, 60, 67, 0.42);
+  --hairline: rgba(0, 0, 0, 0.08);
+  --blue: #007aff;
+  --red: #ff3b30; --orange: #ff9500; --green: #34c759; --gray: #8e8e93;
+  --title-from: #1d1d1f; --title-to: #5b5b63;
+  --glow-a: rgba(0, 122, 255, 0.12); --glow-b: rgba(175, 82, 222, 0.10);
+  --cover-bg: #e5e5ea;
+  --raised: rgba(255, 255, 255, 0.92);
+  --toast: rgba(255, 255, 255, 0.9);
+  --sheet: rgba(255, 255, 255, 0.92);
+  --soft-panel: rgba(255, 255, 255, 0.5);
+  --dashed: rgba(0, 0, 0, 0.14);
+  --accent-text: #0062cc;
+  --link-hover: #000;
+  --shadow-lg: 0 18px 40px -22px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0; min-height: 100vh; color: var(--label);
+  font-family: var(--font); font-size: 15px; line-height: 1.45;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  background:
+    radial-gradient(1100px 620px at 8% -12%, var(--glow-a), transparent 62%),
+    radial-gradient(900px 560px at 92% -18%, var(--glow-b), transparent 60%),
+    var(--bg);
+  background-repeat: no-repeat;
+}
+::selection { background: rgba(10, 132, 255, 0.45); }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
+
+.wrap { padding: 56px 0 72px; display: flex; flex-direction: column; gap: 32px; }
+.pad { padding-inline: clamp(16px, 5vw, 56px); }
+
+/* ---- masthead ---- */
+.mast { display: flex; flex-direction: column; gap: 10px; }
+.title {
+  margin: 0; font-family: "Grenze Gotisch", var(--font-display);
+  font-weight: 800; font-size: clamp(46px, 7.4vw, 76px);
+  letter-spacing: 0.005em; line-height: 1.12; padding: 0.02em 0.08em 0.08em 0;
+  background: linear-gradient(180deg, var(--title-from) 30%, var(--title-to) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.sub { margin: 0; color: var(--label-2); font-size: 17px; line-height: 1.5; max-width: 60ch; letter-spacing: -0.015em; }
+
+.mast { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.toolbar { display: flex; align-items: center; gap: 10px; }
+.segmented {
+  display: inline-flex; padding: 2px; border-radius: 10px; background: var(--fill);
+}
+.segmented button {
+  padding: 6px 14px; border-radius: 8px; font-size: 13.5px; font-weight: 600; color: var(--label-2);
+  transition: background-color .15s, color .15s;
+}
+.segmented button[aria-pressed=true] { background: var(--raised); color: var(--label); box-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.icon-btn {
+  width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--fill); color: var(--label);
+}
+.icon-btn:hover { filter: brightness(1.15); }
+.icon-btn svg { width: 18px; height: 18px; }
+.add-btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 18px 0 13px; border-radius: 999px;
+  background: var(--blue); color: #fff; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--blue) 40%, transparent);
+  transition: filter .15s, transform .15s;
+}
+.add-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.add-btn svg { width: 19px; height: 19px; }
+:root[data-theme="light"] .theme-dark-icon, :root:not([data-theme="light"]) .theme-light-icon { display: none; }
+
+/* medium (default): between compact and large */
+:root[data-density="medium"] .board { grid-auto-columns: 308px; }
+:root[data-density="medium"] .row { gap: 12px; padding: 8px 12px 8px 8px; border-radius: 14px; }
+:root[data-density="medium"] .cover { width: 60px; height: 90px; border-radius: 8px; }
+:root[data-density="medium"] .cover.none { font-size: 24px; }
+:root[data-density="medium"] .info { gap: 7px; }
+:root[data-density="medium"] .row .t { font-size: 15.5px; }
+:root[data-density="medium"] .pct { font-size: 15px; padding: 5px 8px; border-radius: 8px; }
+:root[data-density="medium"] .price { font-size: 17px; }
+
+/* compact: tiny covers, tight rows */
+:root[data-density="compact"] .board { grid-auto-columns: 280px; }
+:root[data-density="compact"] .row { gap: 10px; padding: 5px 10px 5px 6px; border-radius: 10px; }
+:root[data-density="compact"] .cover { width: 26px; height: 39px; border-radius: 4px; }
+:root[data-density="compact"] .cover.none { font-size: 13px; }
+:root[data-density="compact"] .info { gap: 3px; }
+:root[data-density="compact"] .row .t { font-size: 14px; }
+:root[data-density="compact"] .lane-body { gap: 2px; }
+:root[data-density="compact"] .pct { font-size: 13px; padding: 3px 6px; border-radius: 6px; }
+:root[data-density="compact"] .price { font-size: 14.5px; }
+:root[data-density="compact"] .price-stack { flex-direction: row; align-items: baseline; gap: 6px; }
+:root[data-density="compact"] .why { display: none; }
+:root[data-density="compact"] .row .edit { top: 4px; right: 4px; width: 22px; height: 22px; font-size: 11px; }
+
+/* ---- stat tiles ---- */
+.status {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(4, minmax(104px, 1fr)) minmax(300px, 3.2fr);
+}
+.stat {
+  display: flex; flex-direction: column-reverse; justify-content: center; gap: 2px;
+  padding: 14px 18px; border-radius: var(--radius-md);
+  background: var(--panel-solid); border: 1px solid var(--hairline);
+}
+.stat-k { font-size: 13px; color: var(--label-2); font-weight: 500; }
+.stat-v {
+  font-family: var(--font-display); font-size: 30px; font-weight: 600;
+  letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums;
+}
+.stat.on-sale .stat-v { color: var(--green); }
+.stat.playing { flex-direction: column; justify-content: center; gap: 8px; }
+.stat.playing .np-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.np {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 11px 5px 9px; border-radius: 999px;
+  background: rgba(48, 209, 88, 0.13); color: var(--label);
+  font-size: 14px; font-weight: 600;
+}
+.np::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 8px var(--green);
+}
+.np.muted { background: var(--fill); color: var(--label-2); font-weight: 500; }
+
+/* ---- vote panel (full width, top of the status area) ---- */
+.vote-panel {
+  grid-column: 1 / -1; display: flex; flex-direction: column; gap: 14px;
+  padding: 16px 18px 18px; border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--blue) 10%, transparent), transparent 90px),
+    var(--panel-solid);
+  border: 1px solid var(--hairline);
+}
+.vp-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+.vp-title { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 200px; }
+.vp-title h2 { margin: 0; font-family: var(--font-display); font-size: 19px; font-weight: 650; letter-spacing: -0.02em; }
+.vp-sub { font-size: 13px; color: var(--label-2); }
+.vp-sub b { color: var(--label); font-weight: 600; font-variant-numeric: tabular-nums; }
+.new-vote {
+  font-size: 13px; font-weight: 600; color: var(--accent-text);
+  padding: 6px 13px; border-radius: 999px; background: color-mix(in srgb, var(--blue) 15%, transparent);
+}
+.new-vote:hover { background: color-mix(in srgb, var(--blue) 26%, transparent); }
+.vp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+.vr {
+  display: flex; align-items: center; gap: 12px; min-width: 0;
+  padding: 8px 10px 8px 6px; border-radius: 14px; background: var(--card);
+}
+.vr-rank {
+  width: 22px; flex-shrink: 0; text-align: center;
+  font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--label-3); font-variant-numeric: tabular-nums;
+}
+.vr.top .vr-rank { color: var(--label); }
+.status .vote-panel .vr .cover { width: 40px; height: 60px; border-radius: 6px; }
+.status .vote-panel .vr .cover.none { font-size: 16px; }
+.vr-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.vr-title { font-size: 15px; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+.vr-title a { color: inherit; text-decoration: none; }
+.vr-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.vr-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 7px; font-size: 12.5px; color: var(--label-3); font-variant-numeric: tabular-nums; }
+.status .vote-panel .vr .pct { font-size: 12.5px; padding: 3px 6px; border-radius: 6px; }
+.status .vote-panel .vr .price { font-size: 15px; }
+.status .vote-panel .vr .was { font-size: 11.5px; }
+.vr-bar { display: flex; align-items: center; gap: 8px; }
+.vr-track { flex: 1; height: 6px; border-radius: 4px; background: var(--fill); overflow: hidden; }
+.vr-fill { display: block; height: 100%; border-radius: 4px; background: var(--blue); }
+.vr-count { font-size: 12.5px; font-weight: 600; color: var(--label-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.vr-who { font-size: 12.5px; color: var(--label-2); overflow-wrap: anywhere; }
+.vr-who b { color: var(--label); font-weight: 600; }
+.vr .vote { flex-shrink: 0; align-self: center; }
+.vp-totals { display: flex; flex-wrap: wrap; gap: 8px; }
+.vp-total {
+  display: flex; flex-direction: column; gap: 1px; min-width: 130px;
+  padding: 7px 14px 8px; border-radius: 12px; background: var(--card);
+}
+.vp-total-k { font-size: 12px; font-weight: 500; color: var(--label-2); }
+.vp-total-v {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 7px;
+  font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+}
+.vp-total-v s { font-family: var(--font); font-size: 12.5px; font-weight: 500; color: var(--label-3); letter-spacing: 0; }
+.vp-total-note { font-size: 11.5px; color: var(--label-3); }
+.np.muted::before { display: none; }
+.np a { color: inherit; text-decoration: none; }
+.np a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---- board ---- */
+.board {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 344px;
+  gap: 16px; align-items: start;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  padding-inline: clamp(16px, 5vw, 56px); padding-block: 4px 20px;
+  scrollbar-width: thin; scrollbar-color: var(--dashed) transparent;
+  scroll-padding-inline: clamp(16px, 5vw, 56px);
+}
+.lane {
+  position: relative; border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--lane) 13%, transparent), transparent 120px),
+    var(--panel-solid);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, var(--shadow-lg);
+  /* skip layout/paint for columns scrolled out of view */
+  content-visibility: auto; contain-intrinsic-size: auto 340px auto 900px;
+  padding: 6px;
+}
+.lane-head { display: flex; align-items: center; gap: 10px; padding: 12px 10px 12px 14px; }
+.lane-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  background: var(--lane); box-shadow: 0 0 10px color-mix(in srgb, var(--lane) 70%, transparent);
+}
+.lane-name {
+  margin: 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: var(--font-display); font-size: 17px; font-weight: 600; letter-spacing: -0.022em;
+}
+.lane-count {
+  font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--label-2);
+  min-width: 24px; padding: 1px 8px; border-radius: 999px; background: var(--fill); text-align: center;
+}
+.lane-body { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; min-height: 8px; border-radius: var(--radius-md); }
+
+/* ---- cards ---- */
+.row {
+  position: relative; display: flex; align-items: center; gap: 14px;
+  padding: 10px 12px 10px 10px; border-radius: 16px;
+  background: var(--card); cursor: grab;
+  transition: background-color .15s ease, transform .15s ease;
+}
+.row:hover { background: var(--card-hover); }
+.row:active { cursor: grabbing; }
+.cover {
+  flex-shrink: 0; width: 96px; height: 144px; border-radius: 11px;
+  object-fit: cover; background: var(--cover-bg);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 6px 16px -4px rgba(0,0,0,.7);
+}
+.cover.none {
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 34px;
+  color: color-mix(in srgb, var(--lane) 80%, var(--label));
+  background: linear-gradient(160deg, color-mix(in srgb, var(--lane) 38%, var(--cover-bg)), var(--cover-bg));
+}
+.info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 9px; }
+.row .t {
+  font-size: 17px; font-weight: 600; line-height: 1.25; letter-spacing: -0.015em;
+  overflow-wrap: anywhere; padding-right: 18px;
+}
+.row .t a { color: inherit; text-decoration: none; }
+.row .t a:hover { color: var(--link-hover); text-decoration: underline; text-decoration-color: var(--label-3); text-underline-offset: 3px; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+
+.sale { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px; font-variant-numeric: tabular-nums; }
+.pct {
+  font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; line-height: 1;
+  padding: 6px 9px; border-radius: 9px;
+}
+/* discount heat: <25% gray, 25–49% green, 50–74% orange, 75%+ red */
+.pct.t1 { color: #fff; background: #636366; }
+.pct.t2 { color: #032b0e; background: var(--green); }
+.pct.t3 { color: #2e1c00; background: var(--orange); }
+.pct.t4 { color: #fff; background: var(--red); }
+.price-stack { display: flex; flex-direction: column; line-height: 1.1; }
+/* sale price under $5 turns red; everything else stays plain */
+.price.p1 { color: #ff6961; text-shadow: 0 0 14px rgba(255, 69, 58, 0.55); }
+.price.p2 { color: var(--orange); }
+.price.p3 { color: var(--green); }
+.price.p4 { color: #a1a1aa; }
+:root[data-theme="light"] .price.p1 { color: #d70015; text-shadow: none; }
+:root[data-theme="light"] .price.p2 { color: #c93400; }
+:root[data-theme="light"] .price.p3 { color: #248a3d; }
+:root[data-theme="light"] .price.p4 { color: #6e6e73; }
+.price { font-family: var(--font-display); font-size: 19px; font-weight: 700; color: var(--label); letter-spacing: -0.02em; }
+.was { font-size: 12.5px; color: var(--label-3); text-decoration: line-through; }
+.chip {
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0;
+  padding: 2px 8px; border-radius: 999px;
+  color: var(--label-2); background: var(--fill);
+}
+.chip.pending { background: none; border: 1px dashed var(--label-3); padding: 1px 7px; }
+.row.just-added { animation: just-added 1.8s ease-out; }
+@keyframes just-added { 0%, 35% { box-shadow: 0 0 0 2px var(--blue); } 100% { box-shadow: 0 0 0 2px transparent; } }
+.chip.ea { color: var(--blue); background: color-mix(in srgb, var(--blue) 15%, transparent); }
+
+/* ---- votes ---- */
+.vote-wrap { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; }
+.vote {
+  display: inline-flex; align-items: center; gap: 4px;
+  height: 28px; padding: 0 10px 0 8px; border-radius: 999px;
+  font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums;
+  color: var(--label-2); background: var(--fill);
+  transition: background-color .15s, color .15s, transform .1s;
+}
+.vote svg { width: 13px; height: 13px; }
+.vote:hover { color: var(--label); background: color-mix(in srgb, var(--blue) 20%, var(--fill)); }
+.vote:active { transform: scale(.93); }
+.vote.mine { color: #fff; background: var(--blue); box-shadow: 0 2px 10px color-mix(in srgb, var(--blue) 45%, transparent); }
+.voters { display: inline-flex; }
+.vote-av {
+  width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 10.5px; font-weight: 700; color: #fff; background: hsl(var(--hue) 55% 42%);
+  box-shadow: 0 0 0 2px var(--card);
+}
+.vote-av + .vote-av { margin-left: -5px; }
+.vote-av.more { background: var(--raised); color: var(--label-2); font-size: 9.5px; }
+:root[data-density="compact"] .vote { height: 22px; padding: 0 7px 0 6px; font-size: 12px; }
+:root[data-density="compact"] .vote .lbl, :root[data-density="compact"] .voters { display: none; }
+
+/* ---- editing affordances ---- */
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: 0; padding: 0; }
+.row.dragging { opacity: .35; }
+.row .edit {
+  position: absolute; top: 7px; right: 7px;
+  width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 13px; color: var(--label); background: var(--raised); box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  opacity: 0; transform: scale(.9); transition: opacity .15s, transform .15s;
+}
+.row:hover .edit, .row .edit:focus-visible { opacity: 1; transform: none; }
+@media (hover: none) { .row .edit { opacity: .9; transform: none; } }
+.drop-mark { height: 3px; border-radius: 2px; background: var(--blue); margin: 0 8px; box-shadow: 0 0 8px var(--blue); }
+.lane-body.over { background: rgba(10, 132, 255, 0.06); }
+.lane-btn {
+  width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  color: var(--label-2); font-size: 17px; line-height: 1; flex-shrink: 0;
+}
+.lane-btn:hover { background: var(--fill); color: var(--label); }
+.lane-titles { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.sorted-note { font-size: 12px; font-weight: 500; color: var(--label-3); letter-spacing: -0.005em; }
+.add-game {
+  margin-top: 4px; padding: 10px 12px; width: 100%; border-radius: var(--radius-md);
+  color: var(--label-3); font-size: 14px; font-weight: 500; text-align: left;
+  transition: background-color .15s, color .15s;
+}
+.add-game:hover { color: var(--blue); background: rgba(10, 132, 255, 0.08); }
+.add-lane {
+  align-self: start; padding: 18px; border-radius: var(--radius-lg);
+  color: var(--label-3); font-size: 15px; font-weight: 500; text-align: left;
+  border: 1.5px dashed var(--dashed);
+}
+.add-lane:hover { color: var(--blue); border-color: rgba(10, 132, 255, .5); }
+
+.save-state {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 5;
+  font-size: 13.5px; font-weight: 600; padding: 9px 16px; border-radius: 999px;
+  background: var(--toast); color: var(--label); border: 1px solid var(--hairline);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.save-state.err { background: rgba(255, 69, 58, 0.92); border-color: transparent; color: #fff; cursor: pointer; }
+.save-state:empty { display: none; }
+
+.foot { color: var(--label-3); font-size: 13px; }
+
+/* ---- activity ---- */
+.lane.activity { background: var(--soft-panel); }
+.feed { list-style: none; margin: 0; padding: 0 4px 6px; display: flex; flex-direction: column; max-height: min(72vh, 900px); overflow-y: auto; scrollbar-width: thin; }
+.feed li { display: flex; gap: 10px; padding: 10px 8px; border-top: 1px solid var(--hairline); }
+.feed li:first-child { border-top: 0; }
+.avatar {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 13px; font-weight: 700; color: #fff;
+  background: hsl(var(--hue) 55% 42%);
+}
+.feed-body { min-width: 0; }
+.feed-body p { margin: 0; font-size: 14px; line-height: 1.35; color: var(--label-2); overflow-wrap: anywhere; }
+.feed-body b { color: var(--label); font-weight: 600; }
+.feed-body b.col-ref { --col: var(--label); font-weight: 700; color: color-mix(in srgb, var(--col) 75%, var(--label)); }
+.feed-meta { font-size: 12px; color: var(--label-3); font-variant-numeric: tabular-nums; }
+.who-btn { text-align: left; }
+.who-btn:hover { color: var(--blue); }
+
+/* ---- Steam Deck / Linux compatibility ---- */
+.compat { display: flex; flex-wrap: wrap; gap: 5px; }
+.compat span {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11.5px; font-weight: 600; line-height: 1; white-space: nowrap;
+  padding: 3px 7px 3px 5px; border-radius: 999px;
+  color: var(--c); background: color-mix(in srgb, var(--c) 15%, transparent);
+}
+.compat svg { width: 14px; height: 14px; flex-shrink: 0; }
+.compat .tux { font-size: 14px; line-height: 1; }
+.c-good { --c: var(--green); }
+.c-ok { --c: #e0b100; }
+.c-bad { --c: var(--red); }
+.c-plat { --c: #8fb3d9; }
+.c-gold { --c: #d4af37; }
+.c-silver { --c: #a6a6ad; }
+.c-bronze { --c: #cd7f32; }
+:root[data-theme="light"] .c-ok { --c: #a37f00; }
+:root[data-theme="light"] .c-plat { --c: #4f78a8; }
+:root[data-theme="light"] .c-gold { --c: #9c7c12; }
+:root[data-theme="light"] .c-silver { --c: #6e6e75; }
+:root[data-density="compact"] .compat .lbl { display: none; }
+:root[data-density="compact"] .compat span { padding: 2px 4px; }
+
+/* ---- weekly suggestions ---- */
+.row.suggested {
+  flex-wrap: wrap; background: rgba(10, 132, 255, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(10, 132, 255, 0.35);
+}
+.sugg-tag {
+  align-self: flex-start; font-size: 11.5px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--accent-text); padding: 2px 8px; border-radius: 999px; background: rgba(10, 132, 255, 0.18);
+}
+.why { flex-basis: 100%; margin: 2px 2px 0; font-size: 13.5px; line-height: 1.4; color: var(--label-2); }
+.sugg-actions { flex-basis: 100%; display: flex; gap: 8px; }
+.sugg-actions button { flex: 1; padding: 8px; border-radius: 10px; font-size: 14px; font-weight: 600; }
+.sugg-actions .keep { background: var(--blue); color: #fff; }
+.sugg-actions .pass { background: var(--fill); color: var(--label); }
+
+/* ---- trash ---- */
+.lane.trash { background: var(--soft-panel); border-style: dashed; border-color: var(--dashed); box-shadow: none; }
+.lane.trash .cover { filter: grayscale(.7); opacity: .7; }
+.lane.trash .row .t { color: var(--label-2); }
+.from { font-size: 12px; color: var(--label-3); }
+.row .restore {
+  position: absolute; top: 7px; right: 39px;
+  height: 26px; padding: 0 10px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 600; color: #fff; background: var(--blue);
+  opacity: 0; transition: opacity .15s;
+}
+.row:hover .restore, .row .restore:focus-visible { opacity: 1; }
+@media (hover: none) { .row .restore { opacity: 1; } }
+.empty-trash { font-size: 13px; font-weight: 600; color: var(--red); padding: 4px 10px; border-radius: 999px; }
+.empty-trash:hover { background: rgba(255, 69, 58, .12); }
+.trash-empty-msg { color: var(--label-3); font-size: 13.5px; padding: 6px 12px 12px; }
+.loading { color: var(--label-2); padding: 40px 0; }
+
+/* ---- sheets (dialogs) ---- */
+dialog {
+  width: min(460px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+  padding: 0; border: 1px solid var(--hairline); border-radius: 24px;
+  background: var(--sheet); color: var(--label);
+  -webkit-backdrop-filter: blur(40px) saturate(180%); backdrop-filter: blur(40px) saturate(180%);
+  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+dialog::backdrop { background: rgba(0, 0, 0, 0.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+dialog form { display: flex; flex-direction: column; gap: 16px; padding: 24px; }
+dialog h3 { margin: 0 0 2px; font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.025em; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field > span { font-size: 13px; font-weight: 500; color: var(--label-2); }
+.field small { color: var(--label-3); font-size: 12.5px; }
+input[type=text], input[type=password], input[type=url], select {
+  font: inherit; font-size: 16px; color: var(--label);
+  background: var(--fill); border: 0; border-radius: 10px;
+  padding: 10px 12px; width: 100%;
+}
+input::placeholder { color: var(--label-3); }
+input:focus, select:focus { outline: 2px solid var(--blue); outline-offset: 0; }
+select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--label-2) 50%), linear-gradient(135deg, var(--label-2) 50%, transparent 50%); background-position: calc(100% - 18px) 55%, calc(100% - 13px) 55%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+.check { display: flex; gap: 10px; align-items: center; font-size: 15px; }
+.check input { width: 18px; height: 18px; accent-color: var(--blue); }
+.linked { display: flex; flex-direction: column; gap: 6px; }
+.linked:empty { display: none; }
+.linked-item, .result {
+  display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px;
+  background: var(--card); font-size: 14.5px; text-align: left; width: 100%;
+}
+.linked-item { background: rgba(10, 132, 255, 0.12); }
+.linked-item a { font-size: 13px; color: var(--blue) !important; text-decoration: none; }
+.result img { width: 64px; height: 24px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+.linked-item span, .result span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.linked-item button { color: var(--label-2); padding: 0 4px; font-size: 18px; line-height: 1; }
+.result:hover, .result:focus-visible { background: rgba(10, 132, 255, 0.18); }
+.result small { flex-shrink: 0; font-size: 12.5px; color: var(--label-3); }
+.result:disabled { opacity: .55; cursor: default; background: var(--card); }
+.result.fallback { background: none; border: 1px dashed var(--hairline); }
+.result.fallback span { white-space: normal; }
+.result.fallback:not(:disabled):hover { background: rgba(10, 132, 255, 0.12); }
+.searching { color: var(--label-3); font-size: 13px; padding: 4px 2px; }
+.lane-pick { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--label-2); }
+.lane-pick select { width: auto; font-size: 15px; padding-block: 7px; }
+#add-dlg .results { max-height: min(360px, 50vh); }
+.results { display: flex; flex-direction: column; gap: 4px; max-height: 240px; overflow-y: auto; }
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+.swatch { width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); transition: transform .12s; }
+.swatch:hover { transform: scale(1.08); }
+.swatch[aria-pressed=true] { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--label); }
+.actions { display: flex; gap: 10px; align-items: center; margin-top: 4px; }
+.actions .spacer { flex: 1; }
+.btn {
+  padding: 9px 18px; border-radius: 12px; font-weight: 600; font-size: 15px;
+  background: var(--fill); color: var(--label); transition: filter .15s;
+}
+.btn:hover { filter: brightness(1.15); }
+.btn.primary { background: var(--blue); color: #fff; }
+.btn.danger { background: none; color: var(--red); padding-inline: 4px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.error-msg { color: var(--red); font-size: 13.5px; min-height: 1em; margin: 0; }
+
+@media (max-width: 760px) {
+  .wrap { padding-top: 36px; gap: 24px; }
+  .status { grid-template-columns: repeat(2, 1fr); }
+  .stat.playing { grid-column: 1 / -1; }
+  .vp-list { grid-template-columns: 1fr; }
+  .vp-head { display: grid; grid-template-columns: 1fr auto; gap: 12px 10px; }
+  .vp-title { grid-column: 1; grid-row: 1; min-width: 0; }
+  .vp-head .new-vote { grid-column: 2; grid-row: 1; align-self: start; }
+  .vp-totals { grid-column: 1 / -1; flex-wrap: nowrap; }
+  .vp-total { flex: 1 1 0; min-width: 0; }
+  .board { grid-auto-columns: 84vw; }
+  .add-btn { width: 40px; padding: 0; justify-content: center; }
+  .add-btn span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="pad mast">
+    <h1 class="title">{{TITLE}}</h1>
+    <div class="toolbar">
+      <div class="segmented" role="group" aria-label="Card size">
+        <button type="button" data-density="compact">Compact</button>
+        <button type="button" data-density="medium">Standard</button>
+        <button type="button" data-density="comfy">Large</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme-btn" title="Toggle light/dark" aria-label="Toggle light or dark mode">
+        <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg>
+      </button>
+      <button type="button" class="add-btn" id="add-btn" title="Add a game" aria-label="Add a game">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span>Add game</span>
+      </button>
+    </div>
+  </div>
+  <div class="pad"><div class="status" id="status"></div></div>
+  <div class="board" id="board"><p class="loading">Loading…</p></div>
+  <div class="pad foot" id="foot"></div>
+</div>
+<button class="save-state" id="save-state" type="button"></button>
+
+<dialog id="item-dlg">
+  <form method="dialog" id="item-form">
+    <h3 id="item-head">Edit game</h3>
+    <label class="field"><span>Title</span><input type="text" id="f-title" maxlength="200" required autocomplete="off"></label>
+    <div class="field">
+      <span>Steam</span>
+      <div class="linked" id="f-linked"></div>
+      <input type="text" id="f-search" placeholder="Search Steam to link a game…" autocomplete="off">
+      <div class="results" id="f-results"></div>
+    </div>
+    <label class="field"><span>Column</span><select id="f-lane"></select></label>
+    <label class="field"><span>Tags</span><input type="text" id="f-tags" placeholder="2p, 4p" autocomplete="off"><small>Comma-separated</small></label>
+    <label class="field"><span>Other link</span><input type="url" id="f-url" placeholder="https://… (for games not on Steam)"></label>
+    <label class="field"><span>Cover image URL</span><input type="url" id="f-cover" placeholder="Leave blank to use Steam art"></label>
+    <div class="actions">
+      <button type="button" class="btn danger" id="f-delete">Delete</button>
+      <span class="spacer"></span>
+      <button type="button" class="btn" value="cancel" id="f-cancel">Cancel</button>
+      <button type="submit" class="btn primary" id="f-save">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="add-dlg">
+  <form method="dialog" id="add-form">
+    <h3>Add a game</h3>
+    <input type="text" id="a-q" placeholder="Paste a Steam link or type a game name" autocomplete="off" aria-label="Steam link or game name">
+    <div class="results" id="a-results"></div>
+    <div class="actions">
+      <label class="lane-pick"><span>Add to</span><select id="a-lane"></select></label>
+      <span class="spacer"></span>
+      <button type="button" class="btn" id="a-cancel">Cancel</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="lane-dlg">
+  <form method="dialog" id="lane-form">
+    <h3 id="lane-head">Column</h3>
+    <label class="field"><span>Name</span><input type="text" id="l-name" maxlength="80" required autocomplete="off"></label>
+    <div class="field"><span>Color</span><div class="swatches" id="l-colors"></div></div>
+    <div class="field">
+      <label class="check"><input type="checkbox" id="l-prices"> Fetch prices</label>
+      <small>Show Steam prices and discounts on this column's games.</small>
+    </div>
+    <label class="check"><input type="checkbox" id="l-sort"> Sort by lowest price</label>
+    <div class="actions" id="l-move">
+      <button type="button" class="btn" id="l-left">← Move left</button>
+      <button type="button" class="btn" id="l-right">Move right →</button>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn danger" id="l-delete">Delete column</button>
+      <span class="spacer"></span>
+      <button type="button" class="btn" id="l-cancel">Cancel</button>
+      <button type="submit" class="btn primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="pw-dlg">
+  <form method="dialog" id="pw-form">
+    <h3>Sign in to save</h3>
+    <label class="field"><span>Your name</span><input type="text" id="pw-name" maxlength="30" autocomplete="nickname" placeholder="Shown in Activity"></label>
+    <label class="field"><span>Password</span><input type="password" id="pw" autocomplete="current-password" required></label>
+    <p class="error-msg" id="pw-err"></p>
+    <div class="actions">
+      <span class="spacer"></span>
+      <button type="button" class="btn" id="pw-cancel">Discard change</button>
+      <button type="submit" class="btn primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+"use strict";
+const COLORS = {
+  red: "#d64545", orange: "#e8833a", amber: "#d99a20", yellow: "#c9b528", lime: "#86bf3a",
+  green: "#46c25f", emerald: "#3d9970", teal: "#2fb890", cyan: "#3aa9b8", blue: "#4a90e2",
+  indigo: "#6b76d6", purple: "#9b7fd4", magenta: "#d155a8", pink: "#e07a9a", brown: "#a87355",
+  gray: "#8b8b8b", slate: "#6e7a99",
+};
+const PW_KEY = "gk-password";
+const NAME_KEY = "gk-name";
+let activity = [];
+const getName = () => { try { return localStorage.getItem(NAME_KEY) || ""; } catch { return ""; } };
+
+let board = { version: 0, lanes: [] };
+let steam = { apps: {} };
+let votes = {}; // { itemId: ["Name", ...] }, kept by the server outside the board
+let voteRound = null; // { startedAt, by } of the current vote, once someone has started one
+const $ = (id) => document.getElementById(id);
+
+// ---- tiny DOM helper: never uses innerHTML, so card text can't inject markup
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") el.className = v;
+    else if (k === "style") el.style.cssText = v;
+    else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid);
+  return el;
+}
+
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random())).slice(0, 12);
+const storeUrl = (id) => `https://store.steampowered.com/app/${id}/`;
+const discountOf = (it) => Math.max(0, ...it.steam.map((a) => steam.apps[a]?.price?.discount || 0));
+const findItem = (id) => {
+  for (const lane of board.lanes) {
+    const i = lane.items.findIndex((x) => x.id === id);
+    if (i >= 0) return { lane, i, item: lane.items[i] };
+  }
+};
+const TRASH = { id: "trash", name: "Trashed", color: "#8e8e93", trash: true, showPrices: false, sortByDiscount: false, items: [] };
+function normalize() {
+  // exactly one trash column, always last
+  let t = board.lanes.find((l) => l.trash);
+  if (!t) board.lanes.push(t = structuredClone(TRASH));
+  board.lanes = [...board.lanes.filter((l) => !l.trash), t];
+}
+const trashLane = () => board.lanes.find((l) => l.trash);
+const realLanes = () => board.lanes.filter((l) => !l.trash);
+function moveItem(item, src, dest, index) {
+  src.items.splice(src.items.indexOf(item), 1);
+  if (dest.trash && !src.trash) { item.fromLane = src.id; item.fromLaneName = src.name; }
+  if (!dest.trash) { delete item.fromLane; delete item.fromLaneName; }
+  if (dest.trash && index == null) index = 0; // newest trash on top
+  if (index == null || index < 0) dest.items.push(item); else dest.items.splice(index, 0, item);
+}
+function restore(item) {
+  const dest = realLanes().find((l) => l.id === item.fromLane) || realLanes()[0];
+  moveItem(item, trashLane(), dest);
+}
+// Lowest current price first (bigger discount breaks ties); games with no
+// Steam price sink to the bottom in their saved order.
+// (The flag keeps its old name, sortByDiscount, so saved boards still read it.)
+const priceOf = (it) => {
+  const v = it.steam.map((a) => priceValue(steam.apps[a]?.price?.final)).filter((x) => x != null);
+  return v.length ? Math.min(...v) : Infinity;
+};
+const displayItems = (lane) =>
+  lane.sortByDiscount
+    ? lane.items.map((it, i) => [it, i, priceOf(it)])
+        .sort((a, b) => (a[2] === b[2] ? 0 : a[2] < b[2] ? -1 : 1) || discountOf(b[0]) - discountOf(a[0]) || a[1] - b[1])
+        .map((p) => p[0])
+    : lane.items;
+
+// ---- rendering -----------------------------------------------------------
+function titleNode(it) {
+  const href = it.steam.length ? storeUrl(it.steam[0]) : it.url;
+  return href ? h("a", { href, target: "_blank", rel: "noopener noreferrer", draggable: "false" }, it.title) : it.title;
+}
+
+let thumbs = {};
+const steamImg = (u) => u && u.replace("//shared.cloudflare.steamstatic.com/", "//shared.steamstatic.com/");
+function coverSrc(it) {
+  if (it.cover) return it.cover;
+  for (const a of it.steam) if (thumbs[a]) return `/thumb/${a}.jpg?v=${thumbs[a]}`;
+  return steamImg(it.steam.map((a) => steam.apps[a]?.cover).find(Boolean));
+}
+function coverNode(it) {
+  const src = coverSrc(it);
+  if (src) return h("img", { class: "cover", src, alt: "", loading: "lazy", decoding: "async", draggable: "false" });
+  return h("span", { class: "cover none" }, (it.title.trim()[0] || "?").toUpperCase());
+}
+
+function priceValue(s) {
+  const n = parseFloat(String(s || "").replace(/[^0-9.]/g, ""));
+  return Number.isFinite(n) ? n : null;
+}
+function priceTier(s) {
+  const v = priceValue(s);
+  if (v == null) return "";
+  return v < 5 ? "p1" : ""; // under $5 = red; everything else plain
+}
+function priceNote(s) {
+  return priceTier(s) ? "Under $5" : "";
+}
+
+const saleTier = (d) => (d >= 75 ? 4 : d >= 50 ? 3 : d >= 25 ? 2 : 1);
+function saleNodes(it) {
+  return it.steam.map((a) => steam.apps[a]?.price).filter((p) => p && p.discount > 0).map((p) => {
+    return h("span", { class: "sale" },
+      h("span", { class: `pct t${saleTier(p.discount)}` }, `−${p.discount}%`),
+      h("span", { class: "price-stack" }, h("span", { class: `price ${priceTier(p.final)}`, title: priceNote(p.final) }, p.final), h("span", { class: "was" }, p.initial)));
+  });
+}
+
+const DECK_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="6" width="21" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="7" y="9" width="10" height="6" rx="1" fill="currentColor"/></svg>';
+function deckSvg() {
+  const t = document.createElement("template");
+  t.innerHTML = DECK_SVG; // constant markup, no user data
+  return t.content.firstChild;
+}
+// One Linux/Deck verdict from Valve's ratings + ProtonDB player reports:
+// Shows a warning only when there's no good evidence it runs (details in the tooltip).
+function compatNode(it) {
+  const app = it.steam.map((a) => steam.apps[a]).find((x) => x && (x.deck || x.proton || x.linuxNative));
+  if (!app) return null;
+  const tier = app.proton?.tier && app.proton.tier !== "pending" ? app.proton.tier : null;
+  const goodProton = tier === "platinum" || tier === "gold";
+  const works = app.linuxNative || app.deck >= 2 || (goodProton && app.steamos !== 1);
+  const deckName = { 3: "Verified", 2: "Playable", 1: "Unsupported" }[app.deck] || "Not tested";
+  const detail = [
+    app.linuxNative ? "Native Linux build" : null,
+    `Steam Deck: ${deckName}`,
+    tier ? `ProtonDB: ${tier[0].toUpperCase() + tier.slice(1)}` : "ProtonDB: no reports",
+  ].filter(Boolean).join(" · ");
+  if (works) return null; // most games run fine; only flag the doubtful ones
+  return h("span", { class: "compat" },
+    h("span", { class: "c-ok", title: `May not work on Linux / Steam Deck; check first. ${detail}` },
+      h("span", { class: "tux", "aria-hidden": "true" }, "⚠️"), h("span", { class: "lbl" }, "Linux")));
+}
+
+// ---- votes: one per person per game, on columns that show prices ----------
+const voteKey = (n) => n.trim().toLowerCase().replace(/\s+/g, " ");
+const votersOf = (it) => votes[it.id] || [];
+const iVoted = (it) => { const me = voteKey(getName()); return !!me && votersOf(it).some((n) => voteKey(n) === me); };
+const nameHue = (n) => [...voteKey(n)].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7) % 360;
+const votedItems = () => realLanes().filter((l) => l.showPrices).flatMap((l) => l.items)
+  .map((it) => [it, votersOf(it).length]).filter(([, n]) => n);
+const UP_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 21 16H3z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>';
+function upSvg() {
+  const t = document.createElement("template");
+  t.innerHTML = UP_SVG; // constant markup, no user data
+  return t.content.firstChild;
+}
+function voteNode(it) {
+  const who = votersOf(it), mine = iVoted(it);
+  return h("span", { class: "vote-wrap", title: who.length ? `Voted: ${who.join(", ")}` : null },
+    h("button", { type: "button", class: mine ? "vote mine" : "vote", "aria-pressed": String(mine), draggable: "false",
+      "aria-label": `${mine ? "Remove your vote for" : "Vote for"} ${it.title}`, onclick: () => toggleVote(it) },
+      upSvg(), who.length ? String(who.length) : h("span", { class: "lbl" }, "Vote")),
+    who.length ? h("span", { class: "voters" },
+      who.slice(0, 4).map((n) => h("span", { class: "vote-av", style: `--hue:${nameHue(n)}` }, n.trim()[0]?.toUpperCase() || "?")),
+      who.length > 4 ? h("span", { class: "vote-av more" }, `+${who.length - 4}`) : null) : null);
+}
+
+// Full-width results: every voted game (never truncated), most votes first
+// (cheaper first on ties), with what it costs now, where it sits, and who
+// wants it. The bar is the share of everyone who has voted this round. The
+// header totals today's prices for the leaders and for everything voted on.
+const bestPrice = (it) => it.steam.map((a) => steam.apps[a]?.price).filter(Boolean)
+  .sort((a, b) => (priceValue(a.final) ?? 1e9) - (priceValue(b.final) ?? 1e9))[0];
+const money = (v) => v.toLocaleString("en-US", { style: "currency", currency: "USD" });
+function priceTotal(rows) {
+  let now = 0, was = 0, missing = 0;
+  for (const r of rows) {
+    const p = bestPrice(r.it), v = p && priceValue(p.final);
+    if (v == null) { missing++; continue; }
+    now += v;
+    was += priceValue(p.initial) ?? v;
+  }
+  return { now, was, missing };
+}
+function totalNode(label, rows) {
+  const t = priceTotal(rows);
+  return h("div", { class: "vp-total" },
+    h("span", { class: "vp-total-k" }, label),
+    h("span", { class: "vp-total-v" }, money(t.now), t.was - t.now >= 0.01 ? h("s", { title: "Before discounts" }, money(t.was)) : null),
+    t.missing ? h("span", { class: "vp-total-note" }, `${t.missing} game${t.missing === 1 ? "" : "s"} without a Steam price`) : null);
+}
+function votePanel() {
+  const byPrice = (a, b) => { const x = priceOf(a), y = priceOf(b); return x === y ? 0 : x < y ? -1 : 1; };
+  const ranked = realLanes().filter((l) => l.showPrices)
+    .flatMap((l) => l.items.map((it) => ({ it, lane: l, n: votersOf(it).length })))
+    .filter((r) => r.n).sort((a, b) => b.n - a.n || byPrice(a.it, b.it));
+  const top = ranked.filter((r) => r.n === ranked[0]?.n); // everything tied for the most votes
+  const people = new Map();
+  for (const r of ranked) for (const n of votersOf(r.it)) people.set(voteKey(n), n);
+  const total = ranked.reduce((a, r) => a + r.n, 0);
+  const me = voteKey(getName());
+  const where = realLanes().filter((l) => l.showPrices).map((l) => l.name).join(" or ") || "a column with prices";
+  const since = voteRound ? new Date(voteRound.startedAt).toLocaleDateString([], { month: "short", day: "numeric" }) : null;
+
+  const sub = ranked.length
+    ? [h("b", {}, String(total)), ` vote${total === 1 ? "" : "s"} from `, h("b", {}, String(people.size)), people.size === 1 ? " person" : " people",
+       since ? ` · started ${since}${voteRound.by ? ` by ${voteRound.by}` : ""}` : null]
+    : [`What should we buy? Hit ▲ Vote on games in ${where}.`, since ? ` · New vote started ${since}${voteRound.by ? ` by ${voteRound.by}` : ""}.` : null];
+
+  const row = (r) => {
+    const who = votersOf(r.it), mine = who.some((n) => voteKey(n) === me);
+    const p = bestPrice(r.it);
+    const rank = ranked.findIndex((x) => x.n === r.n) + 1; // ties share a rank
+    return h("li", { class: rank === 1 ? "vr top" : "vr", title: `${r.n} of ${people.size}: ${who.join(", ")}` },
+      h("span", { class: "vr-rank" }, String(rank)),
+      coverNode(r.it),
+      h("div", { class: "vr-body" },
+        h("span", { class: "vr-title" }, titleNode(r.it)),
+        h("span", { class: "vr-meta" },
+          p && p.discount > 0 ? h("span", { class: `pct t${saleTier(p.discount)}` }, `−${p.discount}%`) : null,
+          p ? h("span", { class: `price ${priceTier(p.final)}`, title: priceNote(p.final) || null }, p.final) : null,
+          p && p.discount > 0 ? h("span", { class: "was" }, p.initial) : null,
+          h("span", {}, `in ${r.lane.name}`)),
+        h("span", { class: "vr-bar" },
+          h("span", { class: "vr-track" }, h("span", { class: "vr-fill", style: `width:${Math.round((r.n / people.size) * 100)}%` })),
+          h("span", { class: "vr-count" }, `${r.n} of ${people.size}`)),
+        h("span", { class: "vr-who" }, who.flatMap((n, k) => [k ? ", " : null, voteKey(n) === me ? h("b", {}, n) : n]))),
+      h("button", { type: "button", class: mine ? "vote mine" : "vote", "aria-pressed": String(mine),
+        "aria-label": `${mine ? "Remove your vote for" : "Vote for"} ${r.it.title}`, onclick: () => toggleVote(r.it) },
+        upSvg(), mine ? "Voted" : "Vote"));
+  };
+
+  return h("section", { class: "vote-panel", "aria-label": "Vote" },
+    h("div", { class: "vp-head" },
+      h("div", { class: "vp-title" }, h("h2", {}, "Vote"), h("span", { class: "vp-sub" }, sub)),
+      ranked.length ? h("div", { class: "vp-totals" },
+        top.length < ranked.length ? totalNode(`Top voted · ${top.length} game${top.length === 1 ? "" : "s"}`, top) : null,
+        totalNode(`All voted · ${ranked.length} game${ranked.length === 1 ? "" : "s"}`, ranked)) : null,
+      ranked.length ? h("button", { type: "button", class: "new-vote", title: "Clear every vote and start over", onclick: newVote }, "New vote") : null),
+    ranked.length ? h("ol", { class: "vp-list" }, ranked.map(row)) : null);
+}
+
+function card(it, lane) {
+  const meta = [...(lane.showPrices ? saleNodes(it) : []), ...it.tags.map((t) => h("span", { class: "chip" }, t))];
+  if (it.pending && !lane.trash)
+    meta.push(h("span", { class: "chip pending", title: "Not matched on Steam yet. The next AI tidy will look it up, fix the title and add a cover." }, "Lookup pending"));
+  if (it.steam.some((a) => steam.apps[a]?.earlyAccess))
+    meta.push(h("span", { class: "chip ea", title: "Steam Early Access: still in development" }, "Early Access"));
+  if (lane.trash && it.fromLaneName) meta.push(h("span", { class: "from" }, `from ${it.fromLaneName}`));
+  if (lane.showPrices && !lane.trash) meta.push(voteNode(it));
+  const sugg = it.suggested && !lane.trash;
+  return h("li", { class: sugg ? "row suggested" : "row", draggable: "true", "data-id": it.id },
+    coverNode(it),
+    h("span", { class: "info" },
+      sugg ? h("span", { class: "sugg-tag" }, "AI pick") : null,
+      h("span", { class: "t" }, titleNode(it)), meta.length ? h("span", { class: "meta" }, meta) : null,
+      lane.trash ? null : compatNode(it)),
+    sugg && it.why ? h("p", { class: "why" }, it.why) : null,
+    sugg ? h("div", { class: "sugg-actions" },
+      h("button", { type: "button", class: "keep", onclick: () => commit(() => { delete it.suggested; delete it.why; delete it.suggestedAt; }) }, "Keep"),
+      h("button", { type: "button", class: "pass", onclick: () => commit(() => {
+        const f = findItem(it.id);
+        f.lane.items.splice(f.i, 1);
+        (board.dismissed ||= []).push({ title: it.title, steam: it.steam });
+      }) }, "Remove")) : null,
+    lane.trash ? h("button", { class: "restore", type: "button", onclick: () => commit(() => restore(it)) }, "Restore") : null,
+    h("button", { class: "edit", type: "button", title: "Edit", "aria-label": `Edit ${it.title}`, onclick: () => openItem(it.id) }, "✎"));
+}
+
+function render() {
+  normalize();
+  const total = realLanes().reduce((n, l) => n + l.items.length, 0);
+  const onSale = realLanes().filter((l) => l.showPrices).reduce((n, l) => n + l.items.filter((it) => discountOf(it) > 0).length, 0);
+  const byName = (n) => board.lanes.find((l) => l.name.toLowerCase() === n);
+  const playing = byName("playing")?.items || [];
+  const stat = (k, v, cls) => h("div", { class: `stat ${cls || ""}` }, h("span", { class: "stat-k" }, k), h("span", { class: "stat-v" }, String(v)));
+  $("status").replaceChildren(
+    votePanel(),
+    stat("Games", total), stat("On sale", onSale, "on-sale"),
+    stat("Beaten", byName("completed")?.items.length || 0), stat("Columns", realLanes().length),
+    h("div", { class: "stat playing" }, h("span", { class: "stat-k" }, "Now playing"),
+      h("div", { class: "np-list" }, playing.length ? playing.map((it) => h("span", { class: "np" }, titleNode(it))) : h("span", { class: "np muted" }, "Nothing right now"))));
+
+  const lanes = board.lanes.map((lane) => {
+    const items = displayItems(lane);
+    if (lane.trash) {
+      return h("section", { class: "lane trash", style: `--lane:${lane.color}` },
+        h("header", { class: "lane-head" },
+          h("span", { class: "lane-dot" }),
+          h("div", { class: "lane-titles" },
+            h("h2", { class: "lane-name" }, "Trashed"),
+            h("span", { class: "sorted-note" }, "Deleted games · restore anytime")),
+          h("span", { class: "lane-count" }, String(lane.items.length)),
+          lane.items.length ? h("button", { class: "empty-trash", type: "button", onclick: emptyTrash }, "Empty") : null),
+        h("ul", { class: "lane-body", "data-lane": lane.id }, lane.items.map((it) => card(it, lane))),
+        lane.items.length ? null : h("p", { class: "trash-empty-msg" }, "Nothing here. Deleted games land here."));
+    }
+    return h("section", { class: "lane", style: `--lane:${lane.color}` },
+      h("header", { class: "lane-head" },
+        h("span", { class: "lane-dot" }),
+        h("div", { class: "lane-titles" },
+          h("h2", { class: "lane-name" }, lane.name),
+          lane.sortByDiscount ? h("span", { class: "sorted-note" }, "Sorted by price") : null),
+        h("span", { class: "lane-count" }, String(lane.items.length)),
+        h("button", { class: "lane-btn", type: "button", title: "Column settings", "aria-label": `${lane.name} settings`, onclick: () => openLane(lane.id) }, "•••")),
+      h("ul", { class: "lane-body", "data-lane": lane.id }, items.map((it) => card(it, lane))),
+      h("button", { class: "add-game", type: "button", onclick: () => openItem(null, lane.id) }, "+ Add game"));
+  });
+  lanes.splice(lanes.length - 1, 0, h("button", { class: "add-lane", type: "button", onclick: () => openLane(null) }, "+ Add column"));
+  lanes.unshift(activityPanel());
+  $("board").replaceChildren(...lanes);
+
+  const when = steam.updated ? new Date(steam.updated).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "—";
+  $("foot").textContent = `Steam prices (US) updated ${when} · last edit ${board.savedAt ? new Date(board.savedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "—"}`;
+}
+
+function ago(iso) {
+  const s = (Date.now() - new Date(iso)) / 1000;
+  if (s < 60) return "just now";
+  if (s < 3600) return `${Math.floor(s / 60)}m ago`;
+  if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
+  if (s < 86400 * 7) return `${Math.floor(s / 86400)}d ago`;
+  return new Date(iso).toLocaleDateString([], { month: "short", day: "numeric" });
+}
+
+// The log stores plain sentences; pick the column names out and bold them in
+// their column's color (names of deleted columns just go bold).
+function activityText(text) {
+  const colorOf = new Map();
+  for (const l of board.lanes) if (!colorOf.has(l.name)) colorOf.set(l.name, l.color);
+  const col = (name) => h("b", { class: "col-ref", style: colorOf.has(name) ? `--col:${colorOf.get(name)}` : null }, name);
+  let m;
+  if ((m = /^(added column |deleted column |recolored |turned (?:on|off) (?:deal sorting|price sorting|prices) for )“(.+)”$/.exec(text))) return [m[1], col(m[2])];
+  if ((m = /^renamed column “(.+)” to “(.+)”$/.exec(text))) return ["renamed column ", col(m[1]), " to ", col(m[2])];
+  const end = text.lastIndexOf("”") + 1;
+  if (!end) return [text];
+  const head = text.slice(0, end), tail = text.slice(end);
+  if ((m = /^ to (.+)$/.exec(tail))) return [head, " to ", col(m[1])];
+  if ((m = /^ from (.+)$/.exec(tail))) {
+    // "from Buy On Sale to To Play": split where both sides are real columns.
+    const rest = m[1];
+    const splits = [...rest.matchAll(/ to /g)].map((x) => [rest.slice(0, x.index), rest.slice(x.index + 4)]);
+    const pick = splits.find(([x, y]) => colorOf.has(x) && colorOf.has(y)) || splits[0];
+    if (pick) return [head, " from ", col(pick[0]), " to ", col(pick[1])];
+  }
+  return [text];
+}
+
+function activityPanel() {
+  const me = getName();
+  return h("section", { class: "lane activity", style: "--lane:#0a84ff" },
+    h("header", { class: "lane-head" },
+      h("span", { class: "lane-dot" }),
+      h("div", { class: "lane-titles" },
+        h("h2", { class: "lane-name" }, "Activity"),
+        h("button", { type: "button", class: "sorted-note who-btn", onclick: changeName }, me ? `You're ${me} · change` : "Set your name"))),
+    activity.length
+      ? h("ol", { class: "feed" }, activity.map((a) =>
+          h("li", {},
+            h("span", { class: "avatar", style: `--hue:${parseInt(a.tag || "0", 16) % 360}`, title: a.tag ? `Visitor #${a.tag}` : "" }, (a.name || "?").trim()[0]?.toUpperCase() || "?"),
+            h("div", { class: "feed-body" },
+              h("p", {}, h("b", {}, a.name || "Someone"), " ", activityText(a.text)),
+              h("span", { class: "feed-meta", "data-at": a.at, "data-tag": a.tag || "" }, `${ago(a.at)}${a.tag ? ` · #${a.tag}` : ""}`)))))
+      : h("p", { class: "trash-empty-msg" }, "No changes yet. Edits show up here."));
+}
+
+function changeName(message) {
+  const n = prompt(typeof message === "string" ? message : "Your name (shown in Activity):", getName());
+  if (n == null) return;
+  try { localStorage.setItem(NAME_KEY, n.trim().slice(0, 30)); } catch {}
+  render();
+}
+setInterval(() => document.querySelectorAll(".feed-meta[data-at]").forEach((el) => {
+  el.textContent = `${ago(el.dataset.at)}${el.dataset.tag ? ` · #${el.dataset.tag}` : ""}`;
+}), 60000);
+
+// ---- saving --------------------------------------------------------------
+let saving = false, prompting = false, again = false, lastGood = null;
+
+function setState(text, err) {
+  const el = $("save-state");
+  el.textContent = text;
+  el.classList.toggle("err", !!err);
+}
+
+function commit(mutate) {
+  if (!lastGood) lastGood = JSON.stringify(board);
+  mutate();
+  render();
+  save();
+}
+
+async function save() {
+  if (saving || prompting) { again = true; return; }
+  let pw = null;
+  try { pw = localStorage.getItem(PW_KEY); } catch {}
+  if (!pw) {
+    prompting = true;
+    pw = await askPassword();
+    prompting = false;
+    if (!pw) { again = false; revert(); return; }
+  }
+  saving = true;
+  setState("Saving…");
+  try {
+    const r = await fetch("/api/board", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json", "X-Password": pw, "X-Editor": getName() },
+      body: JSON.stringify({ version: board.version, lanes: board.lanes, dismissed: board.dismissed || [] }),
+    });
+    const data = await r.json().catch(() => ({}));
+    if (r.status === 401) {
+      try { localStorage.removeItem(PW_KEY); } catch {}
+      saving = false;
+      return save();
+    }
+    if (r.status === 409) {
+      board = data.board;
+      lastGood = null; again = false;
+      render();
+      setState("Someone else just edited — loaded their version. Redo your change.", true);
+      return;
+    }
+    if (!r.ok) throw new Error(data.error || r.status);
+    board.version = data.version;
+    board.savedAt = data.savedAt;
+    steam = data.steam || steam;
+    if (data.activity) activity = data.activity;
+    lastGood = null;
+    render();
+    setState("Saved ✓");
+    setTimeout(() => { if ($("save-state").textContent === "Saved ✓") setState(""); }, 2000);
+  } catch (e) {
+    setState("Not saved — click to retry", true);
+  } finally {
+    saving = false;
+    if (again) { again = false; save(); }
+  }
+}
+$("save-state").addEventListener("click", () => { if ($("save-state").classList.contains("err") && lastGood) save(); });
+
+function revert() {
+  if (lastGood) board = JSON.parse(lastGood);
+  lastGood = null;
+  render();
+  setState("");
+}
+
+function askPassword() {
+  return new Promise((resolve) => {
+    const dlg = $("pw-dlg");
+    $("pw").value = "";
+    $("pw-name").value = getName();
+    $("pw-err").textContent = "";
+    let done = false;
+    const finish = (v) => { if (done) return; done = true; dlg.close(); resolve(v); };
+    $("pw-form").onsubmit = async (ev) => {
+      ev.preventDefault();
+      const pw = $("pw").value;
+      const r = await fetch("/api/login", { method: "POST", headers: { "X-Password": pw } });
+      if (!r.ok) { $("pw-err").textContent = "Wrong password."; return; }
+      try {
+        localStorage.setItem(PW_KEY, pw);
+        localStorage.setItem(NAME_KEY, $("pw-name").value.trim());
+      } catch {}
+      finish(pw);
+    };
+    $("pw-cancel").onclick = () => finish(null);
+    dlg.onclose = () => finish(null);
+    dlg.showModal();
+  });
+}
+
+// ---- voting --------------------------------------------------------------
+// Votes save on their own (not through the board's save), so voting never
+// clashes with someone editing the board at the same time.
+async function voterAuth() {
+  let pw = null;
+  try { pw = localStorage.getItem(PW_KEY); } catch {}
+  if (!pw) {
+    if (prompting) return null;
+    prompting = true;
+    pw = await askPassword();
+    prompting = false;
+    if (!pw) return null;
+  }
+  if (!getName()) changeName("Your name (shows next to your vote):");
+  return getName() ? pw : null;
+}
+
+async function postVote(path, pw, payload) {
+  const r = await fetch(path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "X-Password": pw },
+    body: JSON.stringify({ ...payload, name: getName() }),
+  });
+  const data = await r.json().catch(() => ({}));
+  if (r.status === 401) {
+    try { localStorage.removeItem(PW_KEY); } catch {}
+    throw new Error("wrong password, vote again to sign in");
+  }
+  if (!r.ok) throw new Error(data.error || `error ${r.status}`);
+  return data;
+}
+
+const voteBusy = new Set();
+async function toggleVote(it) {
+  if (voteBusy.has(it.id)) return;
+  const pw = await voterAuth();
+  if (!pw) return;
+  const me = getName(), on = !iVoted(it), before = votes;
+  const others = votersOf(it).filter((n) => voteKey(n) !== voteKey(me));
+  votes = { ...votes, [it.id]: on ? [...others, me] : others };
+  voteBusy.add(it.id);
+  render();
+  try {
+    const data = await postVote("/api/vote", pw, { id: it.id, on });
+    votes = data.votes || {};
+    if (data.activity) activity = data.activity;
+  } catch (e) {
+    votes = before;
+    setState(`Vote not saved: ${e.message}`, true);
+  } finally {
+    voteBusy.delete(it.id);
+    render();
+  }
+}
+
+async function newVote() {
+  const n = votedItems().reduce((a, [, c]) => a + c, 0);
+  if (!confirm(`Start a new vote? This clears all ${n} vote${n === 1 ? "" : "s"} for everyone.`)) return;
+  const pw = await voterAuth();
+  if (!pw) return;
+  try {
+    const data = await postVote("/api/vote/reset", pw, {});
+    votes = data.votes || {};
+    voteRound = data.round || voteRound;
+    if (data.activity) activity = data.activity;
+    render();
+    setState("New vote started ✓");
+    setTimeout(() => { if ($("save-state").textContent === "New vote started ✓") setState(""); }, 2500);
+  } catch (e) {
+    setState(`Couldn't start a new vote: ${e.message}`, true);
+  }
+}
+
+// Pick up other people's votes when you come back to the tab.
+let votesCheckedAt = Date.now();
+async function refreshVotes() {
+  if (document.hidden || voteBusy.size || Date.now() - votesCheckedAt < 15000) return;
+  votesCheckedAt = Date.now();
+  try {
+    const data = await (await fetch("/api/votes")).json();
+    const v = data.votes || {};
+    const log = data.activity || activity;
+    if (!voteBusy.size && !dragId && JSON.stringify([v, data.round, log]) !== JSON.stringify([votes, voteRound, activity])) {
+      votes = v; voteRound = data.round || null; activity = log; render();
+    }
+  } catch {}
+}
+window.addEventListener("focus", refreshVotes);
+document.addEventListener("visibilitychange", refreshVotes);
+
+// ---- drag and drop -------------------------------------------------------
+let dragId = null;
+const mark = h("li", { class: "drop-mark" });
+
+document.addEventListener("dragstart", (e) => {
+  const row = e.target.closest?.(".row");
+  if (!row) return;
+  dragId = row.dataset.id;
+  row.classList.add("dragging");
+  e.dataTransfer.effectAllowed = "move";
+  e.dataTransfer.setData("text/plain", dragId);
+});
+document.addEventListener("dragend", () => {
+  dragId = null;
+  mark.remove();
+  document.querySelectorAll(".dragging, .over").forEach((el) => el.classList.remove("dragging", "over"));
+});
+document.addEventListener("dragover", (e) => {
+  const body = e.target.closest?.(".lane-body") || e.target.closest?.(".lane")?.querySelector(".lane-body");
+  if (!dragId || !body) return;
+  e.preventDefault();
+  document.querySelectorAll(".over").forEach((el) => el !== body && el.classList.remove("over"));
+  body.classList.add("over");
+  const lane = board.lanes.find((l) => l.id === body.dataset.lane);
+  if (lane.sortByDiscount) { mark.remove(); return; }
+  const rows = [...body.querySelectorAll(".row:not(.dragging)")];
+  const after = rows.find((r) => e.clientY < r.getBoundingClientRect().top + r.offsetHeight / 2);
+  body.insertBefore(mark, after || null);
+});
+document.addEventListener("drop", (e) => {
+  const body = e.target.closest?.(".lane-body") || e.target.closest?.(".lane")?.querySelector(".lane-body");
+  if (!dragId || !body) return;
+  e.preventDefault();
+  const beforeId = mark.nextElementSibling?.dataset?.id || null;
+  const id = dragId;
+  mark.remove();
+  commit(() => {
+    const src = findItem(id);
+    const dest = board.lanes.find((l) => l.id === body.dataset.lane);
+    if (src.lane === dest && beforeId === id) return;
+    const before = beforeId ? dest.items.find((x) => x.id === beforeId) : null;
+    src.lane.items.splice(src.i, 1);
+    const idx = before ? dest.items.indexOf(before) : (dest.trash ? 0 : -1);
+    src.lane.items.splice(src.i, 0, src.item); // put back so moveItem can do the bookkeeping
+    moveItem(src.item, src.lane, dest, idx);
+  });
+});
+
+// ---- item dialog ---------------------------------------------------------
+let editing = null; // { id|null, laneId, steam: [] }
+
+function openItem(id, laneId) {
+  const found = id ? findItem(id) : null;
+  const it = found?.item || { title: "", steam: [], tags: [], url: "", cover: "" };
+  editing = { id, steam: [...it.steam] };
+  $("item-head").textContent = id ? "Edit game" : "Add game";
+  $("f-title").value = it.title;
+  $("f-tags").value = it.tags.join(", ");
+  $("f-url").value = it.url || "";
+  $("f-cover").value = it.cover || "";
+  $("f-search").value = "";
+  $("f-results").replaceChildren();
+  $("f-lane").replaceChildren(...board.lanes.map((l) => h("option", { value: l.id }, l.trash ? "Trashed" : l.name)));
+  $("f-lane").value = found ? found.lane.id : laneId;
+  $("f-delete").hidden = !id;
+  $("f-delete").textContent = found?.lane.trash ? "Delete forever" : "Move to trash";
+  renderLinked();
+  $("item-dlg").showModal();
+  if (!id) $("f-title").focus();
+}
+
+function renderLinked() {
+  $("f-linked").replaceChildren(...editing.steam.map((a) =>
+    h("div", { class: "linked-item" },
+      h("span", {}, steam.apps[a]?.name || `Steam app ${a}`),
+      h("a", { href: storeUrl(a), target: "_blank", rel: "noopener noreferrer", }, "Open"),
+      h("button", { type: "button", title: "Unlink", "aria-label": "Unlink", onclick: () => { editing.steam = editing.steam.filter((x) => x !== a); renderLinked(); } }, "×"))));
+}
+
+let searchTimer = null, searchSeq = 0;
+$("f-search").addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  const q = $("f-search").value.trim();
+  if (!q) { $("f-results").replaceChildren(); return; }
+  searchTimer = setTimeout(async () => {
+    const seq = ++searchSeq;
+    const r = await fetch(`/api/steam-search?q=${encodeURIComponent(q)}`).then((r) => r.json()).catch(() => ({ items: [] }));
+    if (seq !== searchSeq) return;
+    $("f-results").replaceChildren(...(r.items.length ? r.items.map((g) =>
+      h("button", { type: "button", class: "result", onclick: () => {
+        if (!editing.steam.includes(g.id)) editing.steam.push(g.id);
+        steam.apps[g.id] = { ...(steam.apps[g.id] || {}), name: g.name };
+        if (!$("f-title").value.trim()) $("f-title").value = g.name;
+        $("f-search").value = "";
+        $("f-results").replaceChildren();
+        renderLinked();
+      } }, g.image ? h("img", { src: g.image, alt: "" }) : null, h("span", {}, g.name)))
+      : [h("small", { style: "color:var(--muted)" }, "No Steam matches")]));
+  }, 280);
+});
+// Enter in the search box shouldn't submit the whole form
+$("f-search").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") { e.preventDefault(); $("f-results").querySelector(".result")?.click(); }
+});
+
+$("item-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const title = $("f-title").value.trim();
+  if (!title) return;
+  const fields = {
+    title,
+    steam: editing.steam,
+    tags: $("f-tags").value.split(",").map((t) => t.trim().replace(/^#/, "")).filter(Boolean),
+  };
+  const url = $("f-url").value.trim(), cover = $("f-cover").value.trim();
+  const laneId = $("f-lane").value;
+  const id = editing.id;
+  $("item-dlg").close();
+  commit(() => {
+    let item;
+    if (id) {
+      const f = findItem(id);
+      item = f.item;
+      Object.assign(item, fields);
+      if (item.steam.length) delete item.pending;
+      if (f.lane.id !== laneId) moveItem(item, f.lane, board.lanes.find((l) => l.id === laneId));
+    } else {
+      item = { id: uid(), ...fields };
+      board.lanes.find((l) => l.id === laneId).items.push(item);
+    }
+    if (url) item.url = url; else delete item.url;
+    if (cover) item.cover = cover; else delete item.cover;
+  });
+});
+$("f-cancel").onclick = () => $("item-dlg").close();
+$("f-delete").onclick = () => {
+  const f = findItem(editing.id);
+  if (f.lane.trash) {
+    if (!confirm(`Permanently delete "${f.item.title}"? This can't be undone from the site.`)) return;
+    $("item-dlg").close();
+    commit(() => f.lane.items.splice(f.i, 1));
+  } else {
+    $("item-dlg").close();
+    commit(() => moveItem(f.item, f.lane, trashLane()));
+  }
+};
+function emptyTrash() {
+  const t = trashLane();
+  if (!confirm(`Permanently delete all ${t.items.length} game(s) in Trashed? This can't be undone from the site.`)) return;
+  commit(() => { t.items = []; });
+}
+
+// ---- lane dialog ---------------------------------------------------------
+let laneEdit = null;
+
+function openLane(id) {
+  const lane = board.lanes.find((l) => l.id === id);
+  laneEdit = { id, color: lane?.color || COLORS.blue };
+  $("lane-head").textContent = lane ? "Column settings" : "New column";
+  $("l-name").value = lane?.name || "";
+  $("l-sort").checked = !!lane?.sortByDiscount;
+  $("l-prices").checked = lane ? !!lane.showPrices : true;
+  $("l-move").hidden = !lane;
+  $("l-delete").hidden = !lane;
+  renderSwatches();
+  $("lane-dlg").showModal();
+}
+function renderSwatches() {
+  $("l-colors").replaceChildren(...Object.entries(COLORS).map(([name, hex]) =>
+    h("button", { type: "button", class: "swatch", title: name, "aria-label": name, "aria-pressed": String(hex === laneEdit.color),
+      style: `background:${hex}`, onclick: () => { laneEdit.color = hex; renderSwatches(); } })));
+}
+$("lane-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const name = $("l-name").value.trim();
+  if (!name) return;
+  const { id, color } = laneEdit, sort = $("l-sort").checked, showPrices = $("l-prices").checked;
+  $("lane-dlg").close();
+  commit(() => {
+    const lane = board.lanes.find((l) => l.id === id);
+    if (lane) Object.assign(lane, { name, color, sortByDiscount: sort, showPrices });
+    else board.lanes.splice(board.lanes.length - 1, 0, { id: uid(), name, color, sortByDiscount: sort, showPrices, items: [] });
+  });
+});
+const moveLane = (d) => {
+  const i = board.lanes.findIndex((l) => l.id === laneEdit.id), j = i + d;
+  if (j < 0 || j >= realLanes().length) return;
+  $("lane-dlg").close();
+  commit(() => { const [l] = board.lanes.splice(i, 1); board.lanes.splice(j, 0, l); });
+};
+$("l-left").onclick = () => moveLane(-1);
+$("l-right").onclick = () => moveLane(1);
+$("l-cancel").onclick = () => $("lane-dlg").close();
+$("l-delete").onclick = () => {
+  const lane = board.lanes.find((l) => l.id === laneEdit.id);
+  const msg = lane.items.length
+    ? `Delete the "${lane.name}" column? Its ${lane.items.length} game(s) will move to Trashed.`
+    : `Delete the "${lane.name}" column?`;
+  if (!confirm(msg)) return;
+  $("lane-dlg").close();
+  commit(() => {
+    for (const it of [...lane.items].reverse()) moveItem(it, lane, trashLane());
+    board.lanes.splice(board.lanes.indexOf(lane), 1);
+  });
+};
+
+// ---- view preferences (per browser) --------------------------------------
+function setPref(key, attr, value) {
+  document.documentElement.dataset[attr] = value;
+  try { localStorage.setItem(key, value); } catch {}
+  syncToolbar();
+}
+function syncToolbar() {
+  const d = document.documentElement.dataset.density || "medium";
+  document.querySelectorAll(".segmented button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.density === d)));
+  const light = document.documentElement.dataset.theme === "light";
+  document.querySelector('meta[name="theme-color"]').content = light ? "#f2f2f7" : "#000000";
+}
+document.querySelectorAll(".segmented button").forEach((b) => b.addEventListener("click", () => setPref("gk-density", "density", b.dataset.density)));
+// ---- quick add (the + button) -----------------------------------------------
+// Paste a Steam link or type a name: Steam matches add with Steam's own title;
+// anything else goes in as "pending" for the next AI tidy to look up.
+const cleanTitle = (s) => s.replace(/[™®©]/g, "").replace(/\s+/g, " ").trim().slice(0, 200);
+const normTitle = (t) => String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+function whereIs(appid, title) {
+  for (const l of board.lanes) for (const it of l.items)
+    if ((appid && it.steam.includes(appid)) || (title && normTitle(it.title) === normTitle(title))) return l.trash ? "Trashed" : l.name;
+  return null;
+}
+function guessTitle(q) {
+  if (!/^https?:\/\//i.test(q)) return cleanTitle(q);
+  try {
+    const u = new URL(q);
+    const parts = u.pathname.split("/").filter(Boolean);
+    const slug = parts.find((p, i) => i > 0 && /^\d+$/.test(parts[i - 1])) || parts.pop() || u.hostname.replace(/^www\./, "").split(".")[0];
+    return cleanTitle(decodeURIComponent(slug).replace(/[_-]+/g, " ")) || u.hostname;
+  } catch { return cleanTitle(q); }
+}
+function openAdd() {
+  const lanes = realLanes();
+  $("a-lane").replaceChildren(...lanes.map((l) => h("option", { value: l.id }, l.name)));
+  $("a-lane").value = (lanes.find((l) => l.name.toLowerCase() === "inbox") || lanes[0]).id;
+  $("a-q").value = "";
+  $("a-results").replaceChildren();
+  $("add-dlg").showModal();
+  $("a-q").focus();
+}
+function quickAdd(fields) {
+  const lane = board.lanes.find((l) => l.id === $("a-lane").value) || realLanes()[0];
+  const item = { id: uid(), tags: [], ...fields };
+  $("add-dlg").close();
+  commit(() => lane.items.unshift(item));
+  const el = document.querySelector(`.row[data-id="${CSS.escape(item.id)}"]`);
+  if (el) { el.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" }); el.classList.add("just-added"); }
+}
+let addTimer = null, addSeq = 0;
+$("a-q").addEventListener("input", () => {
+  clearTimeout(addTimer);
+  const q = $("a-q").value.trim();
+  if (!q) { $("a-results").replaceChildren(); return; }
+  $("a-results").replaceChildren(h("small", { class: "searching" }, "Searching Steam…"));
+  addTimer = setTimeout(async () => {
+    const seq = ++addSeq;
+    const r = await fetch(`/api/steam-search?q=${encodeURIComponent(q)}`).then((r) => r.json()).catch(() => ({ items: [] }));
+    if (seq !== addSeq) return;
+    const rows = r.items.map((g) => {
+      const where = whereIs(g.id, null);
+      return h("button", { type: "button", class: "result", disabled: !!where, onclick: () => quickAdd({ title: cleanTitle(g.name), steam: [g.id] }) },
+        g.image ? h("img", { src: g.image, alt: "" }) : null, h("span", {}, g.name), where ? h("small", {}, `In ${where}`) : null);
+    });
+    const title = guessTitle(q);
+    if (title) {
+      const where = whereIs(null, title);
+      const fields = { title, steam: [], pending: true, ...(/^https?:\/\//i.test(q) ? { url: q.slice(0, 500) } : {}) };
+      rows.push(h("button", { type: "button", class: "result fallback", disabled: !!where, onclick: () => quickAdd(fields) },
+        h("span", {}, r.items.length ? `Not these? Add “${title}” anyway` : `Add “${title}” anyway`),
+        h("small", {}, where ? `In ${where}` : "AI looks it up on the next tidy")));
+    }
+    $("a-results").replaceChildren(...rows);
+  }, 250);
+});
+$("a-q").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") { e.preventDefault(); $("a-results").querySelector(".result:not(:disabled)")?.click(); }
+});
+$("add-form").addEventListener("submit", (e) => e.preventDefault());
+$("a-cancel").onclick = () => $("add-dlg").close();
+$("add-btn").addEventListener("click", openAdd);
+
+$("theme-btn").addEventListener("click", () => setPref("gk-theme", "theme", document.documentElement.dataset.theme === "light" ? "dark" : "light"));
+syncToolbar();
+
+// ---- load ----------------------------------------------------------------
+fetch("/api/board").then((r) => r.json()).then((data) => {
+  board = data.board;
+  steam = data.steam;
+  activity = data.activity || [];
+  thumbs = data.thumbs || {};
+  votes = data.votes || {};
+  voteRound = data.voteRound || null;
+  render();
+}).catch(() => { $("board").replaceChildren(h("p", { class: "loading" }, "Couldn't load the board. Refresh to try again.")); });
+</script>
+</body>
+</html>

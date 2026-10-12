@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+.dev.vars*
+.DS_Store
+# Your own board's config (copy wrangler.example.toml).
+wrangler.toml
+# The maintainer's own notes and data. Not part of Questboard.
+private/

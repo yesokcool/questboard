@@ -1,0 +1,35 @@
+# Copy to wrangler.toml (gitignored) and fill in your own values. See README.md.
+name = "questboard"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+# Serve only on your own domain (routes below), not on <name>.<account>.workers.dev.
+# Set this to true if you don't have a domain on Cloudflare.
+workers_dev = false
+# routes = [{ pattern = "games.example.com", custom_domain = true }]
+
+[vars]
+BOARD_TITLE = "Questboard"
+# BOARD_DESCRIPTION = "Our co-op backlog: what we're playing, what's on sale, and what didn't survive contact."
+
+[triggers]
+# Daily Steam price/cover refresh; weekly permanent backup (Thursday 17:00 UTC).
+# worker.js checks for this exact weekly expression, so change both together.
+crons = ["0 11 * * *", "0 17 * * 4"]
+
+[[kv_namespaces]]
+binding = "GAMES_KV"
+id = "<your KV namespace id: npx wrangler kv namespace create GAMES_KV>"
+
+[[rules]]
+type = "Text"
+globs = ["**/*.html", "**/*.svg"]
+fallthrough = true
+
+# Votes live in one Durable Object so simultaneous votes can't overwrite each other.
+[[durable_objects.bindings]]
+name = "VOTES"
+class_name = "Votes"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Votes"]
